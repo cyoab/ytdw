@@ -1,8 +1,8 @@
-# ytdw - YouTube Downloader
+# 🎬 ytdw - YouTube Downloader
 
-A simple CLI tool to download YouTube videos with a clean, colorful terminal interface.
+A simple CLI tool to download YouTube videos with a clean, colorful terminal interface. ✨
 
-## Requirements
+## 📋 Requirements
 
 - Python 3.12+
 - [uv](https://github.com/astral-sh/uv) package manager
@@ -10,7 +10,7 @@ A simple CLI tool to download YouTube videos with a clean, colorful terminal int
 - **ffmpeg** - required for merging video/audio streams (for best quality)
 - WSL (Windows Subsystem for Linux) - optional, for default Windows path support
 
-## Installation
+## 🚀 Installation
 
 ```bash
 # Install ffmpeg (required for video/audio merging)
@@ -25,7 +25,7 @@ cd ytdw
 uv sync
 ```
 
-## Usage
+## 📖 Usage
 
 ```bash
 # Download a video to the default location (Windows Videos/Youtube Downloads)
@@ -34,21 +34,26 @@ uv run main.py "https://www.youtube.com/watch?v=VIDEO_ID"
 # Download to a specific directory
 uv run main.py "https://www.youtube.com/watch?v=VIDEO_ID" -o /path/to/directory
 
+# Download only the thumbnail (skip video)
+uv run main.py "https://www.youtube.com/watch?v=VIDEO_ID" --thumbnail
+
 # Show help
 uv run main.py --help
 ```
 
-### Arguments
+### ⚙️ Arguments
 
 | Argument | Description |
 |----------|-------------|
 | `url` | YouTube video URL to download (required) |
 | `-o, --output` | Output directory (default: `C:\Users\<username>\Videos\Youtube Downloads` on WSL, or `~/Youtube Downloads` on Linux) |
+| `--thumbnail` | Download only the thumbnail image (skips video download) 🖼️ |
 
-## Features
+## ✅ Features
 
-- Downloads YouTube videos in best available quality
-- Displays video info (title, channel, duration) before downloading
-- Shows real-time download progress with speed and ETA
-- Automatically detects Windows Videos folder when running on WSL
-- Colorful terminal output using Rich
+- 🎥 Downloads YouTube videos in best available quality
+- 📝 Displays video info (title, channel, duration) before downloading
+- 📊 Shows real-time download progress with speed and ETA
+- 🖼️ Automatically saves video thumbnails
+- 🪟 Automatically detects Windows Videos folder when running on WSL
+- 🌈 Colorful terminal output using Rich
