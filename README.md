@@ -37,6 +37,9 @@ uv run main.py "https://www.youtube.com/watch?v=VIDEO_ID" -o /path/to/directory
 # Download only the thumbnail (skip video)
 uv run main.py "https://www.youtube.com/watch?v=VIDEO_ID" --thumbnail
 
+# Download video without thumbnail
+uv run main.py "https://www.youtube.com/watch?v=VIDEO_ID" --no-thumbnail
+
 # Show help
 uv run main.py --help
 ```
@@ -48,6 +51,7 @@ uv run main.py --help
 | `url` | YouTube video URL to download (required) |
 | `-o, --output` | Output directory (default: `C:\Users\<username>\Videos\Youtube Downloads` on WSL, or `~/Youtube Downloads` on Linux) |
 | `--thumbnail` | Download only the thumbnail image (skips video download) 🖼️ |
+| `--no-thumbnail` | Skip downloading the thumbnail with the video 🚫🖼️ |
 
 ## ✅ Features
 

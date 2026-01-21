@@ -40,7 +40,7 @@ def get_default_output_dir() -> Path:
         return Path.home() / "Youtube Downloads"
 
 
-def download_video(url: str, output_dir: Path) -> bool:
+def download_video(url: str, output_dir: Path, skip_thumbnail: bool = False) -> bool:
     """Download a YouTube video to the specified directory."""
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -123,8 +123,8 @@ def download_video(url: str, output_dir: Path) -> bool:
         "merge_output_format": "mp4",
         # Use bun as JS runtime for YouTube signature decryption
         "js_runtimes": {"bun": {}},
-        # Also download thumbnail
-        "writethumbnail": True,
+        # Also download thumbnail (unless --no-thumbnail is specified)
+        "writethumbnail": not skip_thumbnail,
         # Retry on failure
         "retries": 3,
         "fragment_retries": 3,
@@ -221,6 +221,12 @@ def main():
         action="store_true",
         help="Download only the thumbnail (skip video download)",
     )
+    parser.add_argument(
+        "--no-thumbnail",
+        action="store_true",
+        dest="no_thumbnail",
+        help="Skip downloading the thumbnail with the video",
+    )
 
     args = parser.parse_args()
 
@@ -234,7 +240,7 @@ def main():
     if args.thumbnail:
         success = download_thumbnail(args.url, output_dir)
     else:
-        success = download_video(args.url, output_dir)
+        success = download_video(args.url, output_dir, skip_thumbnail=args.no_thumbnail)
     sys.exit(0 if success else 1)
 
 
